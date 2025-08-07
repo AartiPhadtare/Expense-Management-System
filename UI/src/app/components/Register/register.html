@@ -1,0 +1,91 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-300">
+        <h2 class="text-2xl font-bold mb-6 text-center text-indigo-600">Join Us Today</h2>
+        <form [formGroup]="registerForm">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-500 mb-2">Name</label>
+                <input 
+                    formControlName="name"
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500" 
+                    placeholder="Enter your name" 
+                    required>
+                   @if (registerForm.controls['name'].touched && registerForm.controls['name'].hasError('required')) {
+                        <small class="text-red-500">Name is required</small>
+                    }
+                    
+            </div>
+
+            <div class="mb-4">
+                <label for="phoneNumber" class="block text-gray-500 mb-2">Phone Number</label>
+                <input 
+                    formControlName="phoneNumber"
+                    type="number" 
+                    id="phoneNumber" 
+                    name="phoneNumber" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500" 
+                    placeholder="Enter your Phone Number" >
+                    @if (registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)) {
+                        <small class="text-red-500">Enter a phone Number</small>
+                    }
+                     @if (registerForm.controls['phoneNumber'].hasError('maxlength')) {
+                        <small class="text-red-500">phone number should be 10 digit</small>
+                    }
+                     @if (registerForm.controls['phoneNumber'].hasError('minlength')) {
+                        <small class="text-red-500">phone number should be 10 digit</small>
+                    }
+                   
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-500 mb-2">Email</label>
+                <input 
+                    formControlName="email"
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500" 
+                    placeholder="Enter your email" 
+                    required>
+                    @if (registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)) {
+                        <small class="text-red-500">Enter a email</small>
+                    }
+                    @if (registerForm.controls['email'].hasError('email')) {
+                        <small class="text-red-500">Enter a valid email</small>
+                    }
+            </div>
+
+            <div class="mb-6">
+                <label for="password" class="block text-gray-500 mb-2">password</label>
+                <input 
+                    formControlName="password"
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500" 
+                    placeholder="Enter your password" 
+                    >
+                     @if (registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)) {
+                        <small class="text-red-500">Enter a password</small>
+                    }
+                    
+                     @if (registerForm.controls['password'].hasError('minlength')) {
+                        <small class="text-red-500">password length should be min 6 character </small>
+                    }
+                     @if (registerForm.controls['password'].hasError('maxlength')) {
+                        <small class="text-red-500">password length should be max 8 character</small>
+                    }
+                    
+            </div>
+
+             <button type="submit"  class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-amber-500 transition" (click)="register()">
+                Register
+            </button>
+                <p class="flex items-end justify-end">already have an account<a routerLink="/login" class="hover:text-amber-500">&nbsp; Login</a></p>
+        </form>
+
+    </div>
+ 
+</div>

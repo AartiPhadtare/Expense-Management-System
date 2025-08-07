@@ -1,9 +1,51 @@
-<div class="login-container">
-    <div class="min-h-screen flex items-center justify-center bg-white-300">
-        <!-- <h1 class="text-2xl underline">hello</h1> -->
-       <div class="p-8 rounded-xl shadow-md w-full max-w-sm border border-gray-200 bg-gray">
-    <h2 class="text-2xl font-bold mb-6 text-center text-indigo-800">Sign In with email</h2>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-300">
+ <h2 class="text-2xl font-bold mb-6 text-center text-indigo-600">Welcome Back! Please Log In</h2>
+    <form [formGroup]="loginForm">
+      <div class="mb-4">
+        <label for="email" class="block text-gray-500 mb-2">Email</label>
+        <input 
+        formControlName="email"
+        type="email" 
+        id="email" 
+        name="email"
+          class="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500"
+          placeholder="Enter your email" 
+          required>
+          @if (loginForm.controls['email'].hasError('email')) {
+            <small class="text-red-500">enter valid email Id</small>
+          }
+      </div>
+
+      <div class="mb-6">
+        <label for="password" class="block text-gray-500 mb-2">Password</label>
+        <input 
+        formControlName="password"
+        type="password" 
+        id="password" 
+        name="password"
+          class="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-gray-500"
+          placeholder="Enter your password" 
+          required>
+           <!-- @if (loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)) {
+                        <small class="text-red-500">Enter a password</small>
+                    } -->
+          @if (loginForm.controls['password'].hasError('minlength')) {
+              <small class="text-red-500">password length should be min 6 character </small>
+          }
+          @if(loginForm.controls['password'].hasError('maxlength')){
+            <small class="text-red-500">password length should be max 8 character </small>
+          }
+      </div>
+
+      <button type="submit" 
+        class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-amber-500 transition-normal" (click)="login()">
+        Login
+      </button>
+      <p class="flex items-end justify-end"> <a routerLink="/register" class="hover:text-amber-500">Register Here</a> </p>
+    </form>
+
+   
 
   </div>
-    </div>
 </div>

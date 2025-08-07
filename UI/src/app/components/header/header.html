@@ -1,0 +1,38 @@
+<div class="w-full py-4 bg-indigo-600">
+    <div class="flex justify-between items-center">
+        <div>
+            <a href="#" class="text-3xl text-white px-3 h1 font-semibold">Expense Tracking System</a>
+        </div>
+        <div class="pr-4">
+            <ul class="flex items-start">
+                <li class="text-white text-md hover:underline hover:font-bold hover:text-amber-400 px-3 mr-4 transition-normal" >Home</li>
+                @if(user.isLoggedIn){
+                    <div class="dropdown inline-block relative object-cover object-center">
+                        <button class=" font-semibold rounded inline-flex items-center">
+                        <!-- <span class="mr-1">Dropdown</span> -->
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80" class="relative inline-block h-10 w-10 cursor-pointer rounded-full object-cover object-center" alt="">
+                        
+                        </button>
+                        <ul class="dropdown-menu absolute hidden right-0 text-gray-700 pt-1 min-w-[120px] bg-indigo-600">
+                        <li class="rounded-t text-white  hover:bg-amber-500 py-2 px-4 block whitespace-no-wrap cursor-pointer">my profile</li>
+                        
+                        <li  class="rounded-t text-white  hover:bg-amber-500 py-2 px-4 block whitespace-no-wrap cursor-pointer" (click)="user.logout()"> Logout</li>
+                        </ul>
+                    </div>
+
+                   
+                }@else {
+                 <li class="text-white text-md hover:underline hover:font-bold hover:text-amber-400 px-3 transition-normal" routerLink="/login">Login</li>
+                <li class="text-white text-md hover:underline hover:font-bold hover:text-amber-400 px-3 transition-normal" (click)="changePath('register')">Register</li>
+                }
+               
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dropdown:hover .dropdown-menu {
+  display: block;
+}
+</style>
