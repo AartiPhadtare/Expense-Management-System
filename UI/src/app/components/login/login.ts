@@ -3,14 +3,13 @@ import { Component, inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 import { LoginApi } from "./login-api";
-import { RegisterApi } from "../register/register-api";
 import {  UserService } from "../../shared/user.service";
 
 @Component({
     selector:'app-login',
     templateUrl:'./login.html',
     imports:[ReactiveFormsModule, CommonModule, RouterLink, FormsModule],
-    providers:[LoginApi, RegisterApi]
+    providers:[LoginApi]
 })
 export class Login implements OnInit{
 loginApi = inject(LoginApi);
@@ -31,7 +30,7 @@ login(){
      const credentials = this.loginForm.value;
     this.loginApi.getUserData(credentials).subscribe({
         next: (res:any) =>{
-            
+
         localStorage.setItem('token', res.token);
        this.user.isLoggedIn = true;
       console.log(this.user.isLoggedIn)
@@ -39,7 +38,7 @@ login(){
             alert('Login successful');
             this.loginForm.reset();
             this.router.navigate(['dashboard']);
-         
+
             console.log(res);
         },
          error: (err) => {

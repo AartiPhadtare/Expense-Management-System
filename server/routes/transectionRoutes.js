@@ -12,22 +12,16 @@ const checkUserAuth = require("../middleware/userAuth");
 const router = express.Router();
 
 //routes
-//Get all transections
-router.post("/get-transection", checkUserAuth, getAllTransaction);
+router.post("/get-transaction", getAllTransaction);
 
-// Get one transection
-router.get("/get-one-transection/:transactionId", checkUserAuth, getOneTransaction);
+router.get("/get-one-transaction/:transactionId", getOneTransaction);
 
-//add transection POST Method
-router.post("/add-transection", checkUserAuth, addTransaction);
+router.post("/add-transaction", addTransaction);
 
-//Edit transection POST Method
-router.post("/edit-transection/:transactionId", checkUserAuth, editTransaction);
+router.post("/edit-transaction/:transactionId", editTransaction);
 
-//Delete transection POST Method
 router.post(
-  "/delete-transection/:transactionId",
-  checkUserAuth,
+  "/delete-transaction/:transactionId",
   deleteTransaction
 );
 
