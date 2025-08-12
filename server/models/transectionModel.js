@@ -22,7 +22,7 @@ const transectionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      requires: [true, "category is required"],
+      required: [true, "category is required"],
     },
     refrence: {
       type: String,
@@ -33,7 +33,7 @@ const transectionSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      required: [true, "data is required"],
+      required: [true, "date is required"],
     },
   },
   { timestamps: true }

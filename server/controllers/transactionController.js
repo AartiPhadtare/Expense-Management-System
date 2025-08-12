@@ -74,7 +74,7 @@ const addTransaction = async (req, res) => {
 
     // const newTransection = new transectionModel(req.body);
     const newTransection = new transectionModel({
-      expenseAppUserId: req.user.expenseAppUserId,
+      expenseAppUserId:"n8rLhXow8d",
       transactionId: nanoId,
       amount: amount,
       type: type,

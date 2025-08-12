@@ -31,7 +31,7 @@ app.set("trust proxy", 1);
 //user routes
 app.use("/api/v1/users", require("./routes/userRoute"));
 //transections routes
-app.use("/api/v1/transections", require("./routes/transectionRoutes"));
+app.use("/api/v1/transactions", require("./routes/transectionRoutes"));
 
 // user information/help routes
 app.use("/api/v1/user-information", require("./routes/userInfoRoutes"));
@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
             <li>Register User - /api/v1/users/register</li>
             <li>Login User - /api/v1/users/login</li>
             <h3>Transection Route</h3>
-            <li>Transaction Route - /api/v1/transections</li>
+            <li>Transaction Route - /api/v1/transactions</li>
             <li>Many more...</li>
         </ul></div>
     </div>`);
