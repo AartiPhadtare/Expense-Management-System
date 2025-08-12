@@ -6,23 +6,7 @@ const alphabet =
 
 const getAllTransaction = async (req, res) => {
   try {
-    const { frequency, selectedDate, type } = req.body;
-    const transactions = await transectionModel.find({
-      ...(frequency !== "custom"
-        ? {
-            date: {
-              $gt: moment().subtract(Number(frequency), "d").toDate(),
-            },
-          }
-        : {
-            date: {
-              $gte: selectedDate[0],
-              $lte: selectedDate[1],
-            },
-          }),
-      expenseAppUserId: req.user.expenseAppUserId,
-      ...(type !== "all" && { type }),
-    });
+    const transactions = await transectionModel.find({});
     res
       .status(200)
       .json({
@@ -74,7 +58,7 @@ const addTransaction = async (req, res) => {
 
     // const newTransection = new transectionModel(req.body);
     const newTransection = new transectionModel({
-      expenseAppUserId:"n8rLhXow8d",
+      expenseAppUserId: 'n8rLhXow8d',
       transactionId: nanoId,
       amount: amount,
       type: type,
@@ -107,7 +91,7 @@ const editTransaction = async (req, res) => {
       // req.body.payload
       {
         $set: {
-          expenseAppUserId: req.user.expenseAppUserId,
+          expenseAppUserId: 'n8rLhXow8d',
           amount: amount,
           type: type,
           category: category,
